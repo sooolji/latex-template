@@ -1,29 +1,144 @@
 # Plantilla LaTeX
 
-Esta es una plantilla de LaTeX diseñada para escribir papers y proyectos académicos estructurados, específicamente orientada a estudiantes de la **Facultad de Ciencias Naturales y Exactas**, **Departamento de Ciencias de la Computación**.
+Esta plantilla nació para tener un **prototipo rápido** con el que puedas empezar a escribir trabajos universitarios sin pelearte con el formato desde el día uno.
 
-## ¿Por qué usar LaTeX y BibTeX?
+Está orientada a informes, papers y proyectos académicos (especialmente en Ciencias de la Computación), con portada institucional, estructura base y bibliografía.
 
-**LaTeX** es un sistema de preparación de documentos de alta calidad construido para la academia y la ciencia. A diferencia de procesadores de texto habituales (como Word), en LaTeX escribes texto en plano acompañado de comandos de formato. ¿Por qué deberías usarlo?
+---
 
-- **Estética profesional inigualable:** Produce documentos con una tipografía y organización impecables, siendo el estándar de oro para fórmulas matemáticas y proyectos científicos.
-- **Enfoque en lo que importa:** Te concentras únicamente en tu contenido; LaTeX se encarga automáticamente del diseño, los saltos de página, márgenes y alineaciones.
-- **Estabilidad sin sorpresas:** Maneja índices, referencias cruzadas y cientos de páginas sin volverse lento, colgarse o desconfigurar tus imágenes al agregar un salto de línea.
+## ¿Qué incluye esta plantilla?
 
-**BibTeX** es el sistema compañero de LaTeX para manejar la bibliografía. En lugar de escribir cada fuente manualmente, guardas tus fuentes en un archivo `.bib` (muchos sitios web como Google Scholar te dan el código BibTeX listo para copiar y pegar) y este genera automáticamente todas las citas y la bibliografía de tu documento en el formato adecuado (APA, IEEE, etc.).
+- Portada con identidad visual institucional.
+- Estructura inicial del documento:
+  - Resumen
+  - Abstract
+  - Índice
+  - Introducción
+  - Desarrollo
+  - Conclusiones
+  - Bibliografía
+- Configuración de idioma en español.
+- Márgenes y formato académico base.
+- Archivo `.bib` para referencias (listo para usar si decides migrar a BibTeX).
 
-## ¿Dónde editar tus archivos?
+---
 
-Al estar basado en texto, puedes editar los archivos de varias maneras:
+## Importante: bibliografía por defecto vs recomendación
 
-- **[Overleaf](https://www.overleaf.com/) (La opción más fácil):** Es un editor online colaborativo (como un Google Docs para LaTeX). No necesitas instalar nada; creas tu cuenta, subes esta carpeta y estás listo para empezar.
-- **Visual Studio Code:** Usando la extensión *LaTeX Workshop*, es ideal si ya estás familiarizado con la programación y quieres mantener todo en un solo editor.
-- **Editores de Escritorio Dedicados:** Programas como [TeXstudio](https://www.texstudio.org/) o [TeXmaker](https://www.xm1math.net/texmaker/) están construidos específicamente para LaTeX e incluyen atajos y autocompletado nativo.
+Actualmente, el template viene por defecto con bibliografía manual usando `thebibliography` (es decir, **sin `bibitem` predefinidos ni gestión automática**).
 
-## ¿Dónde aprender más?
+Eso te permite arrancar rápido, pero para trabajos serios y medianos/grandes te recomiendo fuertemente usar **BibTeX** (o biblatex/biber).
 
-Si quieres dominar LaTeX, estos sitios son excelentes puntos de partida:
+### ¿Por qué te invito a usar BibTeX?
 
-1. [Learn LaTeX in 30 minutes de Overleaf](https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes): El mejor tutorial express para arrancar desde cero.
-2. [Documentación de Overleaf](https://www.overleaf.com/learn): Una enciclopedia masiva; si no sabes cómo hacer una tabla o insertar una imagen, la respuesta está aquí.
-3. [LaTeX-Tutorial.com](https://www.latex-tutorial.com/): Guías prácticas y visuales muy amigables para todo nivel.
+Porque te evita errores y trabajo repetitivo:
+
+- Centralizas tus fuentes en un solo archivo `.bib`.
+- Reutilizas referencias entre varios documentos.
+- Cambias de estilo (APA, IEEE, etc.) sin reescribir toda la bibliografía.
+- Evitas inconsistencias en autores, años, títulos y formato de citas.
+- Escala muchísimo mejor cuando tienes 10, 30 o 100+ referencias.
+
+---
+
+## Flujo recomendado con BibTeX
+
+1. Guarda tus referencias en un archivo como `.bib/referencias.bib`.
+2. Cita en el texto con claves, por ejemplo: `\cite{clave2024}`.
+3. Genera la bibliografía automáticamente.
+
+Ejemplo mínimo (si usas BibTeX clásico):
+
+```latex-template/README.md#L1-8
+\bibliographystyle{plain}   % o IEEEtran, apalike, etc.
+\bibliography{.bib/referencias}
+```
+
+> Nota: para compilar con BibTeX normalmente se usa la secuencia:
+> `pdflatex -> bibtex -> pdflatex -> pdflatex`
+
+---
+
+## Buenas prácticas (recomendadas desde el inicio)
+
+### 1) Separa contenido de formato
+- Evita meter estilos locales en cada párrafo.
+- Define estructura y comandos reutilizables.
+
+### 2) Cita siempre con clave, nunca “a mano”
+- No escribas referencias completas en cada documento.
+- Mantén tu `.bib` como fuente única de verdad.
+
+### 3) Usa nombres claros para assets
+- Imágenes: `figuras/arquitectura-general.png`
+- Tablas y anexos con nombres semánticos.
+- Evita `imagen1.png`, `final_final.png`, etc.
+
+### 4) Mantén consistencia de estilo
+- Una convención de títulos.
+- Una convención para figuras/tablas.
+- Un estilo de bibliografía coherente.
+
+### 5) Compila frecuentemente
+- Detecta errores temprano (llaves, referencias rotas, labels duplicados).
+- No esperes al final para “arreglar todo”.
+
+### 6) Control de versiones (Git)
+- Commits pequeños y con mensajes claros.
+- Ignora archivos temporales de compilación.
+- Etiqueta versiones importantes (entrega parcial, versión final).
+
+---
+
+## Cómo manejar proyectos grandes en LaTeX
+
+Cuando tu documento crezca (tesis, memoria, informe largo), no trabajes todo en un solo `.tex`.
+
+### Estructura sugerida
+
+```latex-template/README.md#L1-13
+proyecto/
+├── main.tex
+├── .bib/
+│   └── referencias.bib
+├── capitulos/
+│   ├── 01-introduccion.tex
+│   ├── 02-marco-teorico.tex
+│   ├── 03-metodologia.tex
+│   └── 04-resultados.tex
+├── figuras/
+└── tablas/
+```
+
+### Recomendación de organización
+
+- `main.tex` solo orquesta el documento.
+- Cada capítulo vive en su archivo (`\input{}` o `\include{}`).
+- Bibliografía centralizada en `.bib`.
+- Figuras y tablas separadas por carpetas.
+- Usa `\label{}` y `\ref{}` de forma sistemática.
+
+### Ventajas reales
+
+- Menos conflictos al trabajar en equipo.
+- Navegación más rápida.
+- Menor riesgo de romper todo al editar.
+- Revisiones y correcciones más simples.
+
+---
+
+## ¿Dónde editar?
+
+Puedes usar lo que te resulte más cómodo:
+
+- **Overleaf** (rápido para empezar y colaborar).
+- **VS Code + LaTeX Workshop** (ideal si ya trabajas con Git).
+- **TeXstudio / TeXmaker** (entorno clásico de escritorio).
+
+---
+
+## Recursos útiles
+
+- [Overleaf: Learn LaTeX in 30 minutes](https://www.overleaf.com/learn/latex/Learn_LaTeX_in_30_minutes)
+- [Documentación de Overleaf](https://www.overleaf.com/learn)
+- [LaTeX-Tutorial.com](https://www.latex-tutorial.com/)
