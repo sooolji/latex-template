@@ -1,0 +1,83 @@
+\definecolor{coveraccent}{HTML}{143C52}
+\definecolor{coveraccentlight}{HTML}{8EA6B3}
+\definecolor{coverpaper}{HTML}{F4F6F8}
+\definecolor{covertext}{HTML}{1E2933}
+\definecolor{covermuted}{HTML}{5E6B75}
+
+\newcommand{\TemplateCoverPage}[10]{%
+\begin{titlepage}
+    \newgeometry{left=1.25cm, right=1.25cm, top=1.35cm, bottom=1.35cm}
+    \setlength{\fboxsep}{0pt}
+
+    \noindent
+    \begin{minipage}[c][\textheight][c]{0.34\textwidth}
+        \if\relax\detokenize{#1}\relax
+            \colorbox{coveraccent}{%
+                \parbox[c][\textheight][c]{\linewidth}{%
+                    \centering
+                    \vspace*{1.1cm}
+                    {\color{white}\large\scshape Plantilla de tesis}\par
+                    \vspace{0.55cm}
+                    {\color{white}\rule{0.42\linewidth}{0.8pt}}\par
+                    \vspace{0.55cm}
+                    {\color{white}\bfseries\Large Portada modular}\par
+                    \vfill
+                    {\color{white}\small Dise\~no compartido}\par
+                    \vspace*{1.1cm}
+                }%
+            }%
+        \else
+            \includegraphics[width=\linewidth, height=\textheight, keepaspectratio=false]{#1}
+        \fi
+    \end{minipage}
+    \hfill
+    \begin{minipage}[c][\textheight][t]{0.62\textwidth}
+        \colorbox{coverpaper}{%
+            \parbox[c][\textheight][t]{\linewidth}{%
+                \vspace*{0.55cm}
+                {\color{coveraccent}\rule{\linewidth}{1.8pt}}\par
+                \vspace{0.45cm}
+                {\color{covermuted}\small\scshape Plantilla de tesis}\par
+                \vspace{0.65cm}
+                \begin{center}
+                    \fcolorbox{coveraccentlight}{white}{%
+                        \parbox{0.34\linewidth}{%
+                            \centering
+                            \vspace{0.35cm}
+                            \includegraphics[width=0.78\linewidth]{#2}\par
+                            \vspace{0.3cm}
+                        }%
+                    }\par
+                \end{center}
+                \vspace{0.55cm}
+                {\color{covertext}\Large\bfseries #3}\par
+                \vspace{0.14cm}
+                {\color{covertext}\Large\bfseries #4}\par
+                \vspace{0.14cm}
+                {\color{covertext}\Large\bfseries #5}\par
+                \vspace{0.85cm}
+                {\color{coveraccent}\huge\bfseries #6}\par
+                \vspace{0.28cm}
+                {\color{covermuted}\large #7}\par
+                \vspace{0.75cm}
+                {\color{coveraccent}\rule{0.66\linewidth}{0.9pt}}\par
+                \vspace{0.55cm}
+                {\setlength{\tabcolsep}{0pt}
+                \renewcommand{\arraystretch}{1.55}
+                \begin{tabular}{@{}p{1.8cm}@{\hspace{0.65em}}p{0.72\linewidth}@{}}
+                    {\bfseries\color{covertext}Autor} & \color{covermuted}#8 \\
+                    {\bfseries\color{covertext}Tutor} & \color{covermuted}#9 \\
+                    {\bfseries\color{covertext}Fecha} & \color{covermuted}#10 \\
+                \end{tabular}}\par
+                \vfill
+                \begin{center}
+                    {\small\color{covermuted}Dise\~no de portada modular}
+                \end{center}
+                \vspace*{0.45cm}
+            }%
+        }%
+    \end{minipage}
+
+    \restoregeometry
+\end{titlepage}
+}

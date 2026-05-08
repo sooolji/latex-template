@@ -7,6 +7,8 @@
 \usepackage{geometry} 
 \usepackage{setspace} 
 
+\input{cover}
+
 % --- Soporte para Español y Cambio de Nombres ---
 \usepackage[spanish]{babel} % Configura el idioma español
 
@@ -25,55 +27,7 @@
 
 \begin{document}
 	
-	% ------------------- PORTADA -------------------
-	\begin{titlepage}
-		% Ajuste de márgenes solo para la portada
-		\newgeometry{left=1.5cm, right=1.5cm, top=1.5cm, bottom=1.5cm}
-		
-		\noindent
-		% Columna Izquierda: Imagen decorativa azul (uo-big.png)
-		\begin{minipage}[c][\textheight][c]{0.35\textwidth}
-			\includegraphics[width=\linewidth, height=\textheight, keepaspectratio=false]{uo-big.png}
-		\end{minipage}
-		\hfill
-		% Columna Derecha: Información institucional y título
-		\begin{minipage}[c][\textheight][t]{0.70\textwidth}
-			\vspace{1cm}
-			\begin{center}
-				\includegraphics[width=0.8\linewidth]{logo.png} \\[0.5cm]
-				
-				{\Large \textbf{UNIVERSIDAD DE ORIENTE}} \\[0.7cm]
-			
-				{\large \textbf{FACULTAD DE CIENCIAS NATURALES Y EXACTAS}} \\[0.8cm]
-			
-				{\large \textbf{DEPARTAMENTO DE CIENCIAS DE LA COMPUTACIÓN}} \\[0.8cm]
-
-                {\large \textbf{TERCER AÑO LICENCIATURA CIENCIAS DE LA COMPUTACIÓN}} \\[0.5cm]
-				
-				\vfill
-				
-				{\Large \textbf{Información extra sobre el trabajo}} \\[0.8cm] 
-				{\LARGE \bfseries Título del trabajo:} \\[2.5cm]
-				
-				\vfill
-			\end{center}
-			
-			\begin{flushright}
-				{\large \textbf{Autora:}} \\
-				{\large Solji Charón Peña} \\[0.5cm]
-				{\large \textbf{Tutora:}} \\
-				{\large Nombre}
-			\end{flushright}
-			
-			\vfill
-			
-			\begin{center}
-				{\large \today}
-			\end{center}
-		\end{minipage}
-		
-		\restoregeometry
-	\end{titlepage}
+	\ReportCover
 	
 	% --- Configuración de interlineado ---
 	\onehalfspacing % 1.5 es el estándar académico; usa \doublespacing si lo prefieres

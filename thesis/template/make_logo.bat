@@ -1,0 +1,1 @@
+inkscape -D --export-filename=.\Graphics\logo.pdf --export-latex .\Graphics\logo.svg
